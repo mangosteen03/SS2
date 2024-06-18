@@ -1,0 +1,30 @@
+<%- include('header') %>
+<div class="container">
+    <%- include('nav') %>
+    <main class="main-content">
+        <section class="input-section">
+            <form method="POST" action="/plagiarism">
+                <div class="form-group">
+              <textarea class="form-control" id="text" name="text" rows="5" required>
+                 <%= originalText %>
+              </textarea
+              >
+                </div>
+                <button type="submit" class="btn btn-primary">Check Plagiarism</button>
+            </form>
+
+            <section class="results-section">
+                <h2>Results</h2>
+                <h3>Plagiarism Percentage: <%= matchPercentage %> %</h3>
+                <br>
+                <% plagiarismResults.forEach(result => { %>
+                        <a href="<%= result.link %>"><%= result.link %></a><br>
+                <% }) %>
+            </section>
+        </section>
+    </main>
+</div>
+<%- include('footer') %>
+
+
+

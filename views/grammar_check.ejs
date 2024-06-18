@@ -1,0 +1,8 @@
+<%- include('layout', { body: `
+<form method="POST" action="/grammar-check">
+<div class="form-group">
+<textarea class="form-control" id="text" name="text" rows="5" required></textarea>
+</div>
+<button type="submit" class="btn btn-primary">Check Grammar</button>
+</form>
+` }) %>

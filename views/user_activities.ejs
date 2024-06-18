@@ -1,0 +1,11 @@
+<%- include('layout', { body: `
+<h1>Model Activities</h1>
+${activities.map(activity => `
+<p><strong>Timestamp:</strong> ${activity.timestamp}</p>
+<p><strong>Activity Type:</strong> ${activity.activityType}</p>
+<p><strong>Input:</strong> ${activity.input}</p>
+<p><strong>Output:</strong> ${activity.output}</p>
+<hr />
+`).join('')}
+<a href="/paraphrasing" class="btn btn-primary">Paraphrase Another Text</a>
+` }) %>

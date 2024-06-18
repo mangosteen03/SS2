@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Writing - Introduction and Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        .header nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+        }
+        .header nav a:hover {
+            color: #0073e6;
+        }
+        .intro {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f8ace8;
+        }
+        .intro-content {
+            text-align: center;
+            max-width: 600px;
+        }
+        .intro-content h1 {
+            font-size: 48px;
+            color: #333;
+        }
+        .intro-content p {
+            font-size: 18px;
+            color: #666;
+            margin: 20px 0;
+        }
+        .intro-content button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #58a2fc;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .intro-content button:hover {
+            background-color: #005bb5;
+        }
+        .login {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #e0e7ed;
+        }
+        .login-form {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        .login-form h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .login-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-form button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #58a2fc;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-form button:hover {
+            background-color: #005bb5;
+        }
+        .user-info {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .user-info img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+        }
+        .button
+        {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #58a2fc;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="logo">AI Writing</div>
+    <nav>
+        <a href="#intro">Introduction</a>
+        <% if (is_logged_in) { %>
+            <a href="/logout">Logout</a>
+        <% } else { %>
+            <a href="#login">Login</a>
+        <% } %>
+    </nav>
+</header>
+
+<section id="intro" class="intro">
+    <div class="intro-content">
+        <h1>Welcome to AI Writing</h1>
+        <p>Enhance your writing with our advanced AI technology.</p>
+        <% if (!is_logged_in) { %>
+            <button onclick="document.getElementById('login').scrollIntoView()">Login</button>
+
+        <% }else {  %>
+        <a class="button" href="/grammar-check">Start</a>
+        <%} %>
+
+    </div>
+</section>
+
+<section id="login" class="login">
+    <div class="login-form">
+        <% if (is_logged_in) { %>
+            <div class="user-info">
+                <h2>Welcome, <%= name %></h2>
+                <% if (picture) { %>
+                    <img src="<%= picture %>" alt="User picture">
+                <% } %>
+                <p>You are now logged in.</p>
+            </div>
+        <% } else { %>
+            <h2>Continue with Google </h2>
+            <form action="/auth/google" method="get">
+                <button type="submit">Login</button>
+            </form>
+        <% } %>
+    </div>
+</section>
+</body>
+</html>

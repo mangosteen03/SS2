@@ -1,0 +1,28 @@
+<%- include('header') %>
+<div class="container">
+  <%- include('nav') %>
+  <main class="main-content">
+    <section class="input-section">
+      <form method="POST" action="/grammar-check">
+        <div class="form-group">
+              <textarea class="form-control" id="text" name="text" rows="5" required>
+                <%- originalText %>
+              </textarea
+              >
+        </div>
+        <button type="submit" class="btn btn-primary">Check Grammar</button>
+      </form>
+
+      <section class="results-section">
+        <h2>Generated Text</h2>
+        <div id="errorList" class="error-list">
+        <p> <%- originalText %></p>
+        <p><%- textCompleted %></p>
+        </div>
+      </section>
+    </section>
+  </main>
+</div>
+
+<%- include('footer') %>
+

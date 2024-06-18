@@ -1,0 +1,22 @@
+<%- include('header') %>
+
+<div class="container">
+    <%- include('nav') %>
+    <main class="main-content">
+        <section class="paraphrasing-section">
+            <div class="input-output-container">
+                <div class="input-container">
+                    <form method="POST" action="/paraphrasing">
+                        <textarea  id="inputText" class="input-container"  name="text" rows="10" required></textarea>
+                    <button type="submit"  id="paraphraseButton">Paraphrase</button>
+                    </form>
+                </div>
+                <div class="output-container">
+                    <textarea id="outputText" placeholder="Paraphrased text will appear here..." rows="10" readonly>
+                    </textarea>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+<%- include('footer') %>

@@ -1,0 +1,36 @@
+<%- include('header') %>
+<div class="container">
+  <%- include('nav') %>
+      <main class="main-content">
+        <section class="input-section">
+          <form method="POST" action="/grammar-check">
+            <div class="form-group">
+              <textarea class="form-control" id="text" name="text" rows="5" required>
+                <% question %>
+            </textarea
+              >
+            </div>
+            <button type="submit" class="btn btn-primary">Check Grammar</button>
+          </form>
+
+          <section class="results-section">
+            <h2>Results</h2>
+            <p><%- highlightedText %></p>
+            <br />
+            <br />
+            <div id="errorList" class="error-list">
+              <% if (errors && errors.length> 0) { %> <% errors.forEach(error=>
+              { %>
+              <p>
+                "<%= error.incorrect_word %>" - Suggested correction: <%=
+                error.suggestion %>
+              </p>
+              <% }); %> <% } %>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+<%- include('footer') %>
+
